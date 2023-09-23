@@ -11,16 +11,18 @@ const PhoneCard = ({phone}) => {
     if(!favoriteItems){
         addedFavoritesArray.push(phone)
         localStorage.setItem('favorites', JSON.stringify(addedFavoritesArray))
+        sweetAlert("Good job!", "Added to favorites!", "success")
     }
     else{
         const isExist = favoriteItems.find(phone => phone.id === id)
-        
+
         if(!isExist){
             addedFavoritesArray.push(...favoriteItems, phone)
             localStorage.setItem('favorites', JSON.stringify(addedFavoritesArray))
+            sweetAlert("Good job!", "Added to favorites!", "success")
         }
         else{
-            alert ('Already Added')
+            sweetAlert("Oops...", "Already Added!", "error");
         }
     }
 

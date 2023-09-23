@@ -13,9 +13,11 @@ const Favorites = () => {
     const favoriteItems = JSON.parse(localStorage.getItem("favorites"));
     if (favoriteItems) {
       setFavorites(favoriteItems);
+      
 
       const total = favoriteItems.reduce((previousValue, currentValue)=> previousValue + currentValue.price,0)
       setTotalPrice(total)
+      
 
     } else {
       setNoData("No Data Found");
@@ -24,7 +26,9 @@ const Favorites = () => {
   const handleRemove = () => {
     localStorage.clear();
     setFavorites([]);
+    sweetAlert("Done!", "All data removed!", "success")
     setNoData("No Data Found");
+
   };
 
   return (
